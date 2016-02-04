@@ -15,7 +15,7 @@ require([], function(){
 	var camera	= new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 1000);
 	camera.position.x = 0
 	camera.position.z = 15
-	camera.position.y = 15
+	camera.position.y = 25
 
 	// declare the rendering loop
 	var onRenderFcts= [];
@@ -142,17 +142,18 @@ require([], function(){
 		mouse.y	= (event.clientY / window.innerHeight) - 0.5
 	}, false)
 	onRenderFcts.push(function(delta, now){
-		camera.position.x += (mouse.x*10 - camera.position.x) * (delta*10)
-		camera.position.y = 25+ (mouse.y*5 - camera.position.y) * (delta*3)
-		// if(now > 3){
-		// 	if(now < 5){
-		// 		camera.rotateY(delta*(now-2)/25)
-		// 	}else{
-		// 		camera.rotateY(delta*3/25)
-		// 	}
-		if(mouse.x > 0.05 || mouse.x < -0.05){
-			camera.rotateY(delta*3/5*mouse.x);
+		// camera.position.x += (mouse.x*10 - camera.position.x) * (delta*3)
+		// camera.position.y = 25+ (mouse.y*5 - camera.position.y) * (delta*3)
+		if(now > 3){
+			if(now < 5){
+				camera.rotateY(delta*(now-2)/25)
+			}else{
+				camera.rotateY(delta*3/25)
+			}
 		}
+		// if(mouse.x > 0.05 || mouse.x < -0.05){
+		// 	camera.rotateY(delta*3/5*mouse.x);
+		// }
 
 
 	})
